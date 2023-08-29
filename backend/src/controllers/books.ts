@@ -10,6 +10,17 @@ export const getBooks: RequestHandler = async (req, res, next) => {
 	}
 }
 
+export const getBook: RequestHandler = async (req, res, next) => {
+	const bookId = req.params.bookId;
+
+	try {
+		const book = await BookModel.findById(bookId).exec();
+		res.status(200).json(book);
+	} catch (error) {
+		next(error);
+	}
+}
+
 export const createBook: RequestHandler = async (req, res, next) => {
 	const title = req.body.title;
 	const author = req.body.author;
