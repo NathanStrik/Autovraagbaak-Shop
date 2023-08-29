@@ -1,8 +1,13 @@
 import "dotenv/config";
 import express, { NextFunction, Request, Response } from "express";
 import booksRoutes from "./routes/books";
+import morgan from "morgan";
+
+const LOGGING_LEVEL = "dev";
 
 const app = express();
+
+app.use(morgan(LOGGING_LEVEL));
 
 app.use(express.json());
 
