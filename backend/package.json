@@ -1,0 +1,32 @@
+{
+"name": "backend",
+"version": "1.0.0",
+"description": "Server Backend for Autovraagbaak Shop React Project.",
+"main": "dist/server.js",
+"scripts": {
+	"start": "nodemon src/server.ts",
+	"lint": "eslint . --ext .ts",
+	"test": "echo \"Error: no test specified\" && exit 1"
+},
+"keywords": [
+	"Webshop",
+	"Autovraagbaak"
+],
+"author": "Nathan Strik",
+"license": "ISC",
+"devDependencies": {
+	"@types/express": "^4.17.17",
+	"@typescript-eslint/eslint-plugin": "^6.4.1",
+	"@typescript-eslint/parser": "^6.4.1",
+	"eslint": "^8.48.0",
+	"nodemon": "^3.0.1",
+	"ts-node": "^10.9.1",
+	"typescript": "^5.1.6"
+},
+"dependencies": {
+	"dotenv": "^16.3.1",
+	"envalid": "^7.3.1",
+	"express": "^4.18.2",
+	"mongoose": "^7.4.5"
+}
+}
