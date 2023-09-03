@@ -1,22 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import { Button } from 'react-bootstrap';
+import { Book } from './models/book';
 
 function App() {
-	const [counter, setCounter] = useState(0);
+	const [books, setBooks] = useState<Book[]>([]);
+
+	useEffect(() => {
+		async function loadBooks() {
+			try {
+				const response = await fetch("/api/books", { method: "GET" });
+				const books = await response.json();
+				setBooks(books);
+			} catch (error) {
+				console.error(error);
+				alert(error);
+			}
+		}
+		loadBooks();
+	}, []);
 
 	return (
 		<div className="App">
-		<header className="App-header">
-			<img src={logo} className="App-logo" alt="logo" />
-			<p>
-				Hello, this is basic UI!
-			</p>
-			<Button onClick={() => setCounter(counter + 1)}>
-				Clicked {counter} times
-			</Button>
-		</header>
+			{JSON.stringify(books)}
 		</div>
 	);
 }
